@@ -111,6 +111,43 @@
           }
         }
       }
+    },
+    "builder-feature-browser": {
+      "projectType": "library",
+      "root": "libs/builder/feature-browser",
+      "sourceRoot": "libs/builder/feature-browser/src",
+      "prefix": "nx-move-project-module-already-exists",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/builder/feature-browser/tsconfig.lib.json",
+            "project": "libs/builder/feature-browser/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/builder/feature-browser/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/builder/feature-browser/src/**/*.ts",
+              "libs/builder/feature-browser/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/builder/feature-browser"],
+          "options": {
+            "jestConfig": "libs/builder/feature-browser/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -133,7 +170,8 @@
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": true
     },
     "@nrwl/angular:component": {
       "style": "scss"

@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-move-project-module-already-exists/builder/feature-browser": [
+        "libs/builder/feature-browser/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
